@@ -1,12 +1,12 @@
 from random import shuffle
 
 
-def get_wordlist() -> list:
+def get_wordlist(filename) -> list:
     """
     This function reads words from file
     :return:
     """
-    with open('words.txt', 'r', encoding='utf-8') as file:
+    with open(filename, 'r', encoding='utf-8') as file:
         word_list = []
         for data in file:
             word_list.append(data.rstrip())
@@ -24,24 +24,26 @@ def to_shake_word(word: str) -> str:
     return ''.join(shuffle_word)
 
 
-def write_statistic(user_name: str, result: int) -> bool:
+def write_statistic(user_name: str, result: int, filename: str) -> bool:
     """
     This function write result of game into file
-    :param user_name:
-    :param result:
+    :param user_name: name of user
+    :param result: result of game
+    :param filename: name of file
     :return:
     """
-    with open('history.txt', 'a', encoding='utf-8') as history:
+    with open(filename, 'a', encoding='utf-8') as history:
         history.write(f'{user_name}:{result}\n')
     return True
 
 
-def read_statistic() -> tuple:
+def read_statistic(filename: str) -> tuple:
     """
     This function read statistics from file. Return tuple which contain count of games and maximum result
-    :return: tuple(count_of_games, max_result)
+    :param filename: name of file
+    :return:
     """
-    with open('history.txt', 'r', encoding='utf-8') as file:
+    with open(filename, 'r', encoding='utf-8') as file:
         players = []
         results = []
         for lines in file:
