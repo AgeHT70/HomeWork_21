@@ -8,7 +8,7 @@ def load_students(filename=path.join("Data", "students.json")) -> dict:
     :param filename: name of file with information about students
     :return: dictionary  with information about students
     """
-    with open(filename) as students_file:
+    with open(filename, mode='r', encoding='utf-8') as students_file:
         students = json.load(students_file)
     return students
 
@@ -19,7 +19,7 @@ def load_professions(filename=path.join("Data", "professions.json")):
     :param filename: name of file with information about professions
     :return: dictionary  with information about professions
     """
-    with open(filename) as professions_file:
+    with open(filename, mode='r', encoding='utf-8') as professions_file:
         professions = json.load(professions_file)
     return professions
 
@@ -71,4 +71,3 @@ def check_fitness(student: dict, profession: dict) -> dict:
         "fit_percent": fit_percent
     }
     return result_dict
-
