@@ -4,9 +4,9 @@ import json
 
 def load_students(filename=path.join("Data", "students.json")) -> dict:
     """
-    Load information about students from file
+    Load information about students from json file
     :param filename: name of file with information about students
-    :return: dictionary  with information about students
+    :return: dictionary  with decoded information about students
     """
     with open(filename, mode='r', encoding='utf-8') as students_file:
         students = json.load(students_file)
@@ -15,9 +15,9 @@ def load_students(filename=path.join("Data", "students.json")) -> dict:
 
 def load_professions(filename=path.join("Data", "professions.json")):
     """
-    Load information about professions from file
+    Load information about professions from json file
     :param filename: name of file with information about professions
-    :return: dictionary  with information about professions
+    :return: dictionary  with decoded information about professions
     """
     with open(filename, mode='r', encoding='utf-8') as professions_file:
         professions = json.load(professions_file)
