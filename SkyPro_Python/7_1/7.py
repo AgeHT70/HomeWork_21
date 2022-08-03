@@ -10,19 +10,19 @@ information_for_add = """Киселёв / Всеволод / Эдуардови�
 Шанская / Аграфена / Семёновна / 116 404 / 7 июля 1982 года / +7 (954) 940-47-96 / психолог для рыб"""
 
 employees = {}
-employee_dict = {}
 
 inform_list = information_for_add.split('\n')
 employees_list = [information.strip().split('/') for information in inform_list]
 
 for employee in employees_list:
-    employee_dict['f'] = employee[0].strip()
-    employee_dict['i'] = employee[1].strip()
-    employee_dict['o'] = employee[2].strip()
-    employee_dict['pass'] = employee[3].strip()
-    employee_dict['birthday'] = employee[4].strip()
-    employee_dict['phone'] = employee[5].strip()
-    employee_dict['position'] = employee[6].strip()
+    employee_dict = {'f': employee[0].strip(),
+                     'i': employee[1].strip(),
+                     'o': employee[2].strip(),
+                     'pass': employee[3].strip(),
+                     'birthday': employee[4].strip(),
+                     'phone': employee[5].strip(),
+                     'position': employee[6].strip()}
+
     employees[employee[0]] = employee_dict.copy()
 
 for employee in employees.values():
