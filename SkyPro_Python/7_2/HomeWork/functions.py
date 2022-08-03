@@ -24,7 +24,7 @@ def load_professions(filename=path.join("Data", "professions.json")):
     return professions
 
 
-def get_student_by_pk(pk: int) -> dict | str:
+def get_student_by_pk(pk: int) -> dict | bool:
     """
     Get dict with data about student by pk
     :param pk: number of student
@@ -34,10 +34,10 @@ def get_student_by_pk(pk: int) -> dict | str:
     for student in students:
         if student["pk"] == pk:
             return student
-    return "У нас нет такого студента"
+    return False
 
 
-def get_profession_by_title(title: str) -> dict | str:
+def get_profession_by_title(title: str) -> dict | bool:
     """
     Get dictionary with data about profession by title
     :param title: name of profession
@@ -47,7 +47,7 @@ def get_profession_by_title(title: str) -> dict | str:
     for profession in professions:
         if profession["title"].lower() == title.lower():
             return profession
-    return "У нас нет такой профессии"
+    return False
 
 
 def check_fitness(student: dict, profession: dict) -> dict:
