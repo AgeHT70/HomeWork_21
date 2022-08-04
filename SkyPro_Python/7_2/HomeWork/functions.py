@@ -2,7 +2,7 @@ from os import path
 import json
 
 
-def load_students(filename=path.join("Data", "students.json")) -> dict:
+def load_students(filename: str) -> dict:
     """
     Load information about students from json file
     :param filename: name of file with information about students
@@ -13,7 +13,7 @@ def load_students(filename=path.join("Data", "students.json")) -> dict:
     return students
 
 
-def load_professions(filename=path.join("Data", "professions.json")):
+def load_professions(filename: str) -> dict:
     """
     Load information about professions from json file
     :param filename: name of file with information about professions
@@ -24,27 +24,26 @@ def load_professions(filename=path.join("Data", "professions.json")):
     return professions
 
 
-def get_student_by_pk(pk: int) -> dict | bool:
+def get_student_by_pk(pk: int, data: dict) -> dict:
     """
     Get dict with data about student by pk
+    :param data: dictionary with all students
     :param pk: number of student
     :return: dictionary with data about student
     """
-    students = load_students()
-    for student in students:
+    for student in data:
         if student["pk"] == pk:
             return student
-    return False
 
 
-def get_profession_by_title(title: str) -> dict | bool:
+def get_profession_by_title(title: str, data: dict) -> dict | bool:
     """
     Get dictionary with data about profession by title
+    :param data: dictionary with all professions
     :param title: name of profession
     :return: dictionary with data about profession
     """
-    professions = load_professions()
-    for profession in professions:
+    for profession in data:
         if profession["title"].lower() == title.lower():
             return profession
     return False
@@ -64,7 +63,7 @@ def check_fitness(student: dict, profession: dict) -> dict:
     """
     has = set(student["skills"]).intersection(set(profession["skills"]))
     lacks = set(profession["skills"]).difference(set(student["skills"]))
-    fit_percent = round(len(has) / len(profession["skills"]) * 100)
+    fit_percent = round(len(has) / len(set(profession["skills"])) * 100)
     result_dict = {
         "has": has,
         "lacks": lacks,
