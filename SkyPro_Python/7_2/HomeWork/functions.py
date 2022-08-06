@@ -1,4 +1,3 @@
-from os import path
 import json
 
 
@@ -24,7 +23,7 @@ def load_professions(filename: str) -> dict:
     return professions
 
 
-def get_student_by_pk(pk: int, data: dict) -> dict:
+def get_student_by_pk(pk: int, data: dict) -> dict | None:
     """
     Get dict with data about student by pk
     :param data: dictionary with all students
@@ -36,7 +35,7 @@ def get_student_by_pk(pk: int, data: dict) -> dict:
             return student
 
 
-def get_profession_by_title(title: str, data: dict) -> dict | bool:
+def get_profession_by_title(title: str, data: dict) -> dict | None:
     """
     Get dictionary with data about profession by title
     :param data: dictionary with all professions
@@ -46,7 +45,6 @@ def get_profession_by_title(title: str, data: dict) -> dict | bool:
     for profession in data:
         if profession["title"].lower() == title.lower():
             return profession
-    return False
 
 
 def check_fitness(student: dict, profession: dict) -> dict:
