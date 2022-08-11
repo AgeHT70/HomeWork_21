@@ -77,3 +77,4 @@ for guide in guides:
     if guide['pk'] == n:
         print(f"{guide['fields']['full_name']}, туров: {guide['fields']['tours_count']}\n"
               f"{guide['fields']['bio']}")
+
