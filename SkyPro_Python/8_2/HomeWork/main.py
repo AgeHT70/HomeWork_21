@@ -8,8 +8,9 @@ if __name__ == '__main__':
     URL = 'https://jsonkeeper.com/b/JSZH'
     data = load_data(URL)
     # print(data)
+    quest = create_questions(data)
     for _ in range(len(data)):
-        first_question = get_question(create_questions(data))
+        first_question = get_question(quest)
         print(first_question.build_question())
         user_input = input()
         first_question.user_answer = user_input
@@ -19,7 +20,7 @@ if __name__ == '__main__':
         else:
             print(first_question.build_negative_feedback())
 
-    # pprint.pprint(load_data(URL))
+    # pprint.pprint(load_data(URL))7
     # print(info)
     #
     # print(questions)
