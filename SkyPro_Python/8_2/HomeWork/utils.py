@@ -83,7 +83,7 @@ class Question:
         Вопрос: What do people often call American flag?
         Сложность 4/5
         """
-        return f'Вопрос: {self.question}\nСложность: {self.difficulty_level}/5\n{self.is_question}'
+        return f'Вопрос: {self.question}\nСложность: {self.difficulty_level}/5'
 
     def build_positive_feedback(self):
         """Возвращает :
@@ -95,7 +95,7 @@ class Question:
         """Возвращает :
         Ответ неверный, верный ответ __
         """
-        return f'Ответ неверный, верный ответ {type(self.correct_answer)} {self.correct_answer}'
+        return f'Ответ неверный, верный ответ {self.correct_answer}'
 
 
 def load_data(url: str) -> list:
