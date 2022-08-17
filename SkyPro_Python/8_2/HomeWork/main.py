@@ -1,28 +1,29 @@
-from utils import load_data, Question, get_question, create_questions
-import pprint
-import abc
+from utils import load_data, get_statistics, create_questions
+from random import shuffle
 
-if __name__ == '__main__':
-    # print_hi('PyCharm')
 
+def main():
     URL = 'https://jsonkeeper.com/b/JSZH'
     data = load_data(URL)
-    # print(data)
-    quest = create_questions(data)
-    for first_question in quest:
-        # first_question = get_question(quest)
-        if not first_question.is_question:
-            first_question.is_question = True
-            print(first_question.build_question())
-            user_input = input()
-            first_question.user_answer = user_input
-            # print(repr(first_question))
-            if first_question.is_correct():
-                print(first_question.build_positive_feedback())
-            else:
-                print(first_question.build_negative_feedback())
 
-    # pprint.pprint(load_data(URL))7
-    # print(info)
-    #
-    # print(questions)
+    questions_list = create_questions(data)
+    shuffle(questions_list)
+
+    print("Игра начинается!")
+    for one_question in questions_list:
+
+        if not one_question.is_ask:
+            one_question.is_ask = True
+            print(one_question.build_question())
+
+            one_question.user_answer = input()
+
+            if one_question.is_correct():
+                print(one_question.build_positive_feedback())
+            else:
+                print(one_question.build_negative_feedback())
+    print(get_statistics(questions_list))
+
+
+if __name__ == '__main__':
+    main()
