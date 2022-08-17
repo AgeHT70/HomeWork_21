@@ -11,3 +11,7 @@ class BasicWord:
 
     def count_subwords(self) -> int:
         return len(self.subwords)
+
+
+    def __repr__(self):
+        return f"BasicWord: word {self.word}"
