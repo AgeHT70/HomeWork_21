@@ -1,18 +1,3 @@
-# Создайте класс `Player`. Этот класс будет содержать в себе:
-#
-# **Поля:**
-#
-# - имя пользователя,
-# - использованные слова пользователя.
-#
-# **Методы:**
-#
-# - получение количества использованных слов (возвращает int);
-# - добавление слова в использованные слова (ничего не возвращает);
-# - проверка использования данного слова до этого (возвращает bool).
-#
-# Не забудьте определить метод  `__repr__`
-
 class Player:
 
     def __init__(self, name: str):
@@ -22,7 +7,7 @@ class Player:
     def count_user_subwords(self) -> int:
         return len(self.user_subwords)
 
-    def add_to_subwords(self, word: str):
+    def add_to_subwords(self, word: str) -> None:
         self.user_subwords.append(word)
 
     def is_used(self, word: str) -> bool:
