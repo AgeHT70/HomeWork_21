@@ -13,12 +13,26 @@ class Player:
         return self.__list_of_subwords
 
     def count_user_subwords(self) -> int:
+        """
+        Counting words composed by the user
+        :return: length of the list
+        """
         return len(self.list_of_subwords)
 
     def add_to_subwords(self, word: str) -> None:
+        """
+        Add the word into the list
+        :param word:
+        :return:
+        """
         self.list_of_subwords.append(word)
 
     def is_used(self, word: str) -> bool:
+        """
+        Check the word in the list
+        :param word:
+        :return:
+        """
         if word in self.list_of_subwords:
             return True
         return False

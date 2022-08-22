@@ -1,6 +1,4 @@
-import os
 from player import Player
-from basic_word import BasicWord
 from utils import load_random_word
 
 
