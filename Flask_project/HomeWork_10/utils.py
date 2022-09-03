@@ -1,21 +1,21 @@
 import json
 
 
-def load_candidates(filename: str) -> dict:
+def load_candidates(filename: str) -> list[dict]:
     """
     Loads data from json-file.
     :param filename: name of json-file
-    :return: dictionary with data
+    :return: list of dictionaries with data
     """
     with open(filename) as file:
         data = json.load(file)
     return data
 
 
-def get_all(data: dict) -> str:
+def get_all(data: list[dict]) -> str:
     """
     Return all candidate
-    :param data: dictionary with data
+    :param data: list of dictionaries with data
     :return: formatted string
     """
     out_str = ''
@@ -24,10 +24,10 @@ def get_all(data: dict) -> str:
     return out_str
 
 
-def get_by_pk(data: dict, pk: int) -> str:
+def get_by_pk(data: list[dict], pk: int) -> str:
     """
     Return candidate by pk
-    :param data: dictionary with data
+    :param data: list of dictionaries with data
     :param pk: primary key
     :return: formatted string
     """
@@ -38,7 +38,7 @@ def get_by_pk(data: dict, pk: int) -> str:
     return out_str
 
 
-def get_by_skill(data: dict, skill_name: str) -> str:
+def get_by_skill(data: list[dict], skill_name: str) -> str:
     """
     Return candidate by skill name
     :param data: dictionary with data
