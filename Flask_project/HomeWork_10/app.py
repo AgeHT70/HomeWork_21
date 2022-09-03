@@ -26,4 +26,5 @@ def page_skills(skill):
     return f"<pre>{out_str}</pre>"
 
 
-app.run()
+if __name__ == "__main__":
+    app.run()
