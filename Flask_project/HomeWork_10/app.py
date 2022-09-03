@@ -9,6 +9,7 @@ IMG_URL = "https://s5.vcdn.biz/static/f/919223231/image.jpg"
 
 @app.route("/")
 def page_index():
+    """Главная страница"""
     out_str = get_all(load_candidates(FILENAME))
     return f"<pre>{out_str}</pre>"
 

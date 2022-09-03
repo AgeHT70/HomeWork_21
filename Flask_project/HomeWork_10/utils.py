@@ -47,6 +47,6 @@ def get_by_skill(data: list[dict], skill_name: str) -> str:
     """
     out_str = ''
     for candidate in data:
-        if skill_name.lower() in candidate["skills"].lower():
+        if skill_name.lower() in candidate["skills"].lower().split(', '):
             out_str += f'{candidate["name"]}\n{candidate["position"]}\n{candidate["skills"]}\n\n'
     return out_str
