@@ -1,6 +1,0 @@
-Iam:10
-ty:0
-ageht:30
-alesha:30
-kvadro:10
-lino:0
