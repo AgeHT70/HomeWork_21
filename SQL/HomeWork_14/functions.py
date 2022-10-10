@@ -1,15 +1,15 @@
-import json
 import sqlite3
-from itertools import count
-from pprint import pprint
-from typing import Dict, Any
-
-from flask import jsonify
 
 DB_PATH = 'netflix.db'
 
 
 def cursor_fetchall(db_path, query):
+    """
+    Подключение к БД
+    :param db_path: путь до файла БД.
+    :param query: SQL запрос.
+    :return: результат выполнения SQL запроса.
+    """
     with sqlite3.connect(db_path) as con:
         cursor = con.cursor()
         cursor.execute(query)
@@ -18,6 +18,11 @@ def cursor_fetchall(db_path, query):
 
 
 def get_movie_by_title(title: str) -> list[dict]:
+    """
+    Получаем фильм по названию.
+    :param title: название фильма.
+    :return: список фильмов.
+    """
     query = f"""
         SELECT title, country, release_year, listed_in,
                 description
@@ -36,6 +41,12 @@ def get_movie_by_title(title: str) -> list[dict]:
 
 
 def get_movie_by_year(year_from: int, year_to: int) -> list[dict]:
+    """
+    Получаем список фильмов по дате релиза.
+    :param year_from: год релиза "с".
+    :param year_to: год релиза "по".
+    :return: список фильмов.
+    """
     query = f"""
         SELECT title, release_year
         FROM netflix
@@ -49,6 +60,11 @@ def get_movie_by_year(year_from: int, year_to: int) -> list[dict]:
 
 
 def get_movie_by_rating(age: tuple | str) -> list[dict]:
+    """
+    Получаем список фильмов по возрастному рейтингу.
+    :param age: Возрастной рейтинг.
+    :return: Список фильмов.
+    """
     if len(age) == 1:
         query = f"""
         SELECT title, rating, description
@@ -68,6 +84,11 @@ def get_movie_by_rating(age: tuple | str) -> list[dict]:
 
 
 def get_movie_by_genre(genre: str) -> list[dict]:
+    """
+    Получаем список фильмов по жанру.
+    :param genre: жанр.
+    :return: список фильмов.
+    """
     query = f"""
     SELECT title, description
     FROM netflix
@@ -83,7 +104,13 @@ def get_movie_by_genre(genre: str) -> list[dict]:
     return movie_list
 
 
-def count_actors(actor_first, actor_second):
+def count_actors(actor_first: str, actor_second: str) -> list[dict]:
+    """
+    Задание №5
+    :param actor_first:
+    :param actor_second:
+    :return:
+    """
     query = f"""
         SELECT "cast" FROM netflix
         WHERE "cast" LIKE ('%{actor_first}%{actor_second}%') or "cast" LIKE 
@@ -104,7 +131,14 @@ def count_actors(actor_first, actor_second):
     return out_list
 
 
-def get_movie_by_query(type_movie, year, genre):
+def get_movie_by_query(type_movie: str, year: int, genre: str) -> list[dict]:
+    """
+    Задание №6
+    :param type_movie:
+    :param year:
+    :param genre:
+    :return:
+    """
     query = f"""
         SELECT title, description
         FROM netflix
